@@ -8,19 +8,9 @@ use App\Models\Tecnology;
 
 class TecnologyController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('can:admin.tecnologies.index')->only('index');
-        $this->middleware('can:admin.tecnologies.create')->only('create', 'store');
-        $this->middleware('can:admin.tecnologies.edit')->only('edit', 'update');
-        $this->middleware('can:admin.tecnologies.destroy')->only('destroy');
-    }
-
     public function index()
     {
         $tecnologies = Tecnology::all();
-
         return view('admin.tecnologies.index', compact('tecnologies'));
     }
 
@@ -33,11 +23,8 @@ class TecnologyController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required|unique:tecnologies',
         ]);
-
         $tecnology = Tecnology::create($request->all());
-
         return redirect()->route('admin.tecnologies.index', compact('tecnology'))->with('info', 'La tecnología se creó con éxito.');
     }
 

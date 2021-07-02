@@ -10,7 +10,6 @@ class Vacancy extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
-    //con guarded pongo los campos que quiero evitar que se llenen por asignación masiva
 
     public function user()
     {
@@ -52,7 +51,6 @@ class Vacancy extends Model
         return $this->where('category_id', $this->category_id)
             ->with('user')
             ->where('status', "Publicar")
-            // ->where('id', '!=', $vacancy->id)
             ->latest('id')
             ->take(3)
             ->get();

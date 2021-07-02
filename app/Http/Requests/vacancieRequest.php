@@ -13,12 +13,6 @@ class vacancieRequest extends FormRequest
      */
     public function authorize()
     {
-        //verifica que el que cree la vacante este autentificados
-        // if ($this->user_id == auth()->user()->id) {
-        //     return true;
-        // }else{
-        //     return false;
-        // }
         return true;
     }
 
@@ -49,11 +43,9 @@ class vacancieRequest extends FormRequest
                 'experience_id' => 'required',
                 'tecnologies' => 'required',
                 'end' => 'required'
-            ]);
-          
+            ]);          
             // Si el usuario escoge el status publicar todos los campos serán obligatorios.
         }
-
         return $rules;
     }
 }

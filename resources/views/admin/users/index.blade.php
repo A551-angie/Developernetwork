@@ -13,10 +13,12 @@
     </div>
     @endif
     <div class="card">
+        
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        {{-- <th>id vacante</th> --}}
                         <th>Nombres</th>
                         <th>Correo electrónico</th>
                         <th colspan="2"></th>
@@ -24,23 +26,20 @@
                 </thead>
                 <tbody>
                     @foreach ($user as $use)
-                    <tr>
-                        <td>{{$use->name}}</td>
-                        <td>{{$use->email}}</td>
-                        <td width='10px'>
-                            <form action="{{ route('admin.users.index', $use) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                        
+                        <tr>
+                            <td>{{$use->name}}</td>
+                            <td>{{$use->email}}</td>
+                            <td width='10px'>
+                                <form action="{{ route('admin.users.destroy', $use) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>                        
                     @endforeach
                 </tbody>
-
             </table>
-
         </div>
     </div>
 @stop

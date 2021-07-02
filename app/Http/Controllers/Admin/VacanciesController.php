@@ -32,11 +32,9 @@ class VacanciesController extends Controller
         $experiences = Experience::pluck('experience', 'id');
         $tecnologies = Tecnology::all();
         return view('admin.vacancies.create', compact('categories', 'countries',  'wages', 'currencies', 'tecnologies', 'experiences'));
-        //return view('admin.vacancies.create');
     }
 
     public function store(vacancieRequest $request)
-    //aquí envio la info a la BD
     {
         $vacancy = Vacancy::create($request->all());
         // attach gurda dos foraneas
@@ -53,8 +51,6 @@ class VacanciesController extends Controller
 
     public function edit(Vacancy $vacancy)
     {
-        // $this->authorize('author', $vacancy);
-
         $categories = Category::pluck('name', 'id');
         $countries = Country::pluck('long_description', 'id');
         $wages = Salary::pluck('salary', 'id');

@@ -17,7 +17,4 @@ class pageController extends Controller
     {
         return view('vacancy', compact('vacancy'));
     } 
-   
-
-
 }
