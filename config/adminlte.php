@@ -110,14 +110,14 @@ return [
 
     'classes_body' => '',
 
-    'classes_brand' => 'bg-info',
+    'classes_brand' => 'bg-blue-900',
     'classes_brand_text' => '',
     'classes_content_wrapper' => 'content-center',
     'classes_content_header' => '',
     'classes_content' => '',
     'classes_sidebar' => ' elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-primary navbar-light',
+    // 'classes_topnav' => 'navbar-primary navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -215,7 +215,7 @@ return [
     'menu' => [
         [
             'text' => 'Buscar',
-            'search' => true,
+            'search' => false,
             'topnav_right' => true,
         ],
         [
