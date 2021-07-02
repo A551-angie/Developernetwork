@@ -7,6 +7,16 @@
 
     <title>Plataforma desarrolladores</title>
 
+
+
+
+    
+    <link rel="stylesheet" href="{{asset('vendor/jquery-ui-1.12.1/jquery-ui.min.css')}}">
+
+
+
+
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -15,6 +25,7 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <style>
+
     body {
         font-family: 'Nunito', sans-serif;
     }
@@ -82,17 +93,19 @@
             </section>
             <!-- ++++++++++++++++++++ FILTER BEGIN ++++++++++++++++++++ -->
             <section>
-                <div class="max-w-5xl px-6 pb-6 mx-auto">
-                    <div class="container px-6 py-10 mx-auto">
-                        <div class="grid gap-8 mt-6 sm:grid-cols-2 md:grid-cols-2">
-                            <input class="border-gray-300 focus:outline-none rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">  
-                            <button
-                                class="px-4 py-2 font-medium tracking-wide text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                                Buscar
-                            </button>
+                {{-- <form action=""> --}}
+                    <div class="max-w-5xl px-6 pb-6 mx-auto">
+                        <div class="container px-6 py-10 mx-auto">
+                            <div class="grid gap-8 mt-6 sm:grid-cols-2 md:grid-cols-2">
+                                <input id="search" class="border-gray-300 focus:outline-none rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">  
+                                <button
+                                    class="px-4 py-2 font-medium tracking-wide text-white capitalize bg-blue-600 rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                    Buscar
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {{-- </form> --}}
             </section>
             <!-- ++++++++++++++++++++ FILTER CLOSE ++++++++++++++++++++ -->
         </header>
@@ -111,11 +124,29 @@
     <div>
         <livewire:vacancies-list>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+   
+    {{-- libreria jquery --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{asset('vendor/jquery-ui-1.12.1/jquery-ui.min.js')}}"></script>
+   
+    <script>
+
+        $('#search').autocomplete({
+            source: function(request, response){
+                $.ajax({
+                    url: "{{route('search.vacante')}}",
+                    datatype: 'json',
+                    data:{
+                        term: request.term 
+                    },
+                    success: function(data){
+                        response(data)
+                    }
+                });
+            }
+        });
+        
+    </script>
 </body>      
     <!-- ++++++++++++++++++++ FOOTER BEGIN ++++++++++++++++++++ -->
 <x-footer />
-  
-
-
-        
