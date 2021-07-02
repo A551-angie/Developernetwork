@@ -236,12 +236,12 @@ return [
             'icon' => 'fas fa-fw fa-user',
             'icon_color' => 'blue',
         ],
-        // [
-        //     'text' => 'developers',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-lock',
-        //     'can' => 'developerpermi',
-        // ],
+        [
+            'text' => 'Usuarios',
+            'route'  => 'admin.users.index',
+            'icon' => 'fas fa-fw fa-lock',
+            'can' => 'roleAdmin',
+        ],
         [
 
             'text' => 'ver vacantes',

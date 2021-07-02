@@ -8,13 +8,14 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\VacanciesController;
 use App\Http\Controllers\pageController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
 // Route::get('/', [VacancyController::class, 'vacancy'])->name('vacancy');
 
 Route::get('vacante/{vacancy:id}', [pageController::class, 'vacancy'])->name('vacancy');
-
+Route::resource('users', UserController::class)->except('show')->names('admin.users');
 
 
 Route::get('/dashboard', function () {
