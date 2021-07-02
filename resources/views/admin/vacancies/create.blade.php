@@ -7,8 +7,8 @@
 @stop
 
 @section('content')
-<div class="card">
-    <div class="card-body">
+<div class="card bg-blue-900">
+    <div class="card-body ">
         {!! Form::open(['route' => 'admin.vacancies.store', 'autocomplete' =>'off']) !!}
 
 

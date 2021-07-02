@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\VacanciesController;
 use App\Http\Controllers\pageController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -16,6 +17,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::get('vacante/{vacancy:id}', [pageController::class, 'vacancy'])->name('vacancy');
 Route::resource('users', UserController::class)->except('show')->names('admin.users');
+Route::get('search/vacante', [SearchController::class, 'vacante'])->name('search.vacante');
 
 
 Route::get('/dashboard', function () {
